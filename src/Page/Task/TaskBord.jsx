@@ -35,6 +35,17 @@ const TaskBoard = () => {
       .catch((error) => console.error("Error updating task:", error));
   };
 
+  const deleteTask = (taskId) => {
+    axios
+      .delete(`http://localhost:5000/tasks/${taskId}`)
+      .then(() => {
+        setTasks((prevTasks) =>
+          prevTasks.filter((task) => task._id !== taskId)
+        );
+      })
+      .catch((error) => console.error("Error deleting task:", error));
+  };
+
   return (
     <div className="container mx-auto p-5">
       <h2 className="text-2xl font-bold text-center mb-5">
@@ -72,6 +83,12 @@ const TaskBoard = () => {
                               <p className="text-sm text-gray-600">
                                 {task.description}
                               </p>
+                              <button
+                                onClick={() => deleteTask(task._id)}
+                                className="ml-2 text-red-500 hover:text-red-700"
+                              >
+                                ❌
+                              </button>
                             </div>
                           )}
                         </Draggable>
