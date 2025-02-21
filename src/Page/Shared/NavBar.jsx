@@ -23,6 +23,14 @@ const NavBar = () => {
       </li>
       <li>
         <Link
+          to="/taskBord"
+          className="font-bold text-gray-700 hover:text-blue-600 px-3 py-2"
+        >
+          Task Bord
+        </Link>
+      </li>
+      <li>
+        <Link
           to="/logIn"
           className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
         >
@@ -66,7 +74,7 @@ const NavBar = () => {
           >
             <Stethoscope className="h-8 w-8 text-blue-600" />
             <span className="ml-2 text-xl font-bold text-gray-800">
-              MediCamp
+            Task Manager
             </span>
           </Link>
         </div>
