@@ -12,7 +12,7 @@ function Router() {
         <Route index element={<Home></Home>}></Route>
         <Route path="/logIn" element={<LogIn></LogIn>}></Route>
         <Route path="/addTask" element={<AddTask></AddTask>}></Route>
-        <Route path="/taskBord" element={<TaskBord></TaskBord>}></Route>
+        <Route path="/taskBoard" element={<TaskBord></TaskBord>}></Route>
       </Route>
     </Routes>
   );
