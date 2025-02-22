@@ -5,6 +5,7 @@ import LogIn from "../Page/Authentication/LogIn";
 import AddTask from "../Page/Task/AddTask";
 import TaskBord from "../Page/Task/TaskBord";
 import PrivateRoute from "./PrivateRoute";
+import EditTask from "../Page/Task/EditTask";
 
 function Router() {
   return (
@@ -28,6 +29,7 @@ function Router() {
             </PrivateRoute>
           }
         ></Route>
+        <Route path="/edit-task/:id" element={<EditTask></EditTask>} />
       </Route>
     </Routes>
   );

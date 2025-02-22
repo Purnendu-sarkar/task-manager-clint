@@ -12,6 +12,7 @@ import Swal from "sweetalert2";
 
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useTasks from "../../hooks/useTasks";
+import { Link } from "react-router-dom";
 
 const categoryStyles = {
   "To-Do": "bg-blue-200 dark:bg-blue-600 border-blue-400 dark:border-blue-500",
@@ -133,9 +134,12 @@ const TaskBoard = () => {
                                 )}
                               </p>
                               <div className="flex justify-end gap-2 mt-2">
-                                <button className="text-blue-500 hover:text-blue-700">
+                                <Link
+                                  to={`/edit-task/${task._id}`}
+                                  className="text-blue-500 hover:text-blue-700"
+                                >
                                   <FaEdit />
-                                </button>
+                                </Link>
                                 <button
                                   onClick={() => deleteTask(task._id)}
                                   className="text-red-500 hover:text-red-700"
