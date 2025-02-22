@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import AboutUs from "./AboutUs";
+import FAQ from "./FAQ";
 
 const Home = () => {
   const { user } = useAuth();
@@ -39,20 +41,10 @@ const Home = () => {
           </div>
         )}
 
-        <div className="max-w-3xl mx-auto mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <Link
-            to="/about"
-            className="p-4 bg-white dark:bg-gray-700 shadow rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600"
-          >
-            About Us
-          </Link>
-          <Link
-            to="/faq"
-            className="p-4 bg-white dark:bg-gray-700 shadow rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600"
-          >
-            FAQ & Help
-          </Link>
-        </div>
+<div className="mt-12 w-full max-w-4xl">
+        <AboutUs></AboutUs>
+        <FAQ></FAQ>
+      </div>
       </div>
     </div>
   );
