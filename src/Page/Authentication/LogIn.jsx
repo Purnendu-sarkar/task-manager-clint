@@ -29,7 +29,7 @@ const LogIn = () => {
             timer: 1500,
           });
 
-          navigate("/");
+          navigate("/taskBoard");
         });
       })
       .catch((error) => {

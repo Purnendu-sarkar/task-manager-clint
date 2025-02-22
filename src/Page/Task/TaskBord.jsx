@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import {
   FaTasks,
@@ -9,6 +8,8 @@ import {
   FaEdit,
 } from "react-icons/fa";
 import moment from "moment";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useTasks from "../../hooks/useTasks";
 
 const categoryStyles = {
   "To-Do": "bg-blue-200 dark:bg-blue-600 border-blue-400 dark:border-blue-500",
@@ -24,48 +25,32 @@ const categoryIcons = {
 };
 
 const TaskBoard = () => {
-  const [tasks, setTasks] = useState([]);
+  const [tasks, , refetch] = useTasks();
+  const axiosSecure = useAxiosSecure();
   const categories = ["To-Do", "In Progress", "Done"];
 
-  useEffect(() => {
-    axios
-      .get("https://task-manager-backend-topaz.vercel.app/tasks")
-      .then((response) => setTasks(response.data))
-      .catch((error) => console.error("Error fetching tasks:", error));
-  }, []);
-
-  // Function to handle drag and drop
-  const handleDragEnd = (result) => {
+  const handleDragEnd = async (result) => {
     if (!result.destination) return;
 
     const { source, destination } = result;
     const taskId = result.draggableId;
     const newCategory = categories[destination.droppableId];
 
-    // Update task category locally
-    setTasks((prevTasks) =>
-      prevTasks.map((task) =>
-        task._id === taskId ? { ...task, category: newCategory } : task
-      )
-    );
-
-    // Send update request to backend
-    axios
-      .put(`https://task-manager-backend-topaz.vercel.app/tasks/${taskId}`, {
-        category: newCategory,
-      })
-      .catch((error) => console.error("Error updating task:", error));
+    try {
+      await axiosSecure.put(`/tasks/${taskId}`, { category: newCategory });
+      refetch();
+    } catch (error) {
+      console.error("Error updating task:", error);
+    }
   };
 
-  const deleteTask = (taskId) => {
-    axios
-      .delete(`https://task-manager-backend-topaz.vercel.app/tasks/${taskId}`)
-      .then(() => {
-        setTasks((prevTasks) =>
-          prevTasks.filter((task) => task._id !== taskId)
-        );
-      })
-      .catch((error) => console.error("Error deleting task:", error));
+  const deleteTask = async (taskId) => {
+    try {
+      await axiosSecure.delete(`/tasks/${taskId}`);
+      refetch();
+    } catch (error) {
+      console.error("Error deleting task:", error);
+    }
   };
 
   return (
