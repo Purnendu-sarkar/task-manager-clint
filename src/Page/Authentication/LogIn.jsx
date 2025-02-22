@@ -43,7 +43,7 @@ const LogIn = () => {
   };
 
   return (
-    <div className="flex flex-col items-center mt-6">
+    <div className="flex justify-center h-screen flex-col items-center mt-6">
       <button
         onClick={handleGoogleSignIn}
         className="flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-blue-500 via-cyan-500 to-teal-500 text-white font-medium text-lg rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-cyan-300"

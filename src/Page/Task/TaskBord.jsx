@@ -82,6 +82,13 @@ const TaskBoard = () => {
     }
   };
 
+  // if (!tasks)
+  //   return (
+  //     <p className="text-center text-5xl font-extrabold mt-96">
+  //       No TASK AVAILAVALE
+  //     </p>
+  //   );
+
   return (
     <div className="container mx-auto p-5">
       <h2 className="text-3xl font-bold text-center mb-5">
