@@ -45,36 +45,43 @@ const AddTask = () => {
   };
 
   return (
-    <div className="container mx-auto p-8 bg-gray-100 rounded shadow">
-      <h2 className="text-2xl font-bold mb-4 text-center">Add New Task</h2>
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-        <div className="form-control">
-          <label className="label">Task Title*</label>
-          <input
-            type="text"
-            placeholder="Enter task title"
-            {...register("title", {
-              required: "Task title is required",
-              maxLength: 50,
-            })}
-            className="input input-bordered"
-          />
-          {errors.title && (
-            <p className="text-red-500">{errors.title.message}</p>
-          )}
-        </div>
-        <div className="form-control">
-          <label className="label">Description (Optional)</label>
-          <textarea
-            placeholder="Enter task description"
-            {...register("description", { maxLength: 200 })}
-            className="textarea textarea-bordered"
-          ></textarea>
-        </div>
-        <button type="submit" className="btn btn-primary w-full">
-          Add Task
-        </button>
-      </form>
+    <div className="w-full h-screen  p-6 rounded-lg shadow-lg bg-white dark:bg-black text-black dark:text-white transition-all">
+      <div className="w-full md:w-11/12 mx-auto">
+        <h2 className="text-2xl font-bold text-center mb-4">Add New Task</h2>
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          <div className="form-control">
+            <label className="block font-medium">Task Title*</label>
+            <input
+              type="text"
+              placeholder="Enter task title"
+              {...register("title", {
+                required: "Task title is required",
+                maxLength: 50,
+              })}
+              className="w-full p-2 rounded-md border border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            {errors.title && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.title.message}
+              </p>
+            )}
+          </div>
+          <div className="form-control">
+            <label className="block font-medium">Description (Optional)</label>
+            <textarea
+              placeholder="Enter task description"
+              {...register("description", { maxLength: 200 })}
+              className="w-full p-2 rounded-md border border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            ></textarea>
+          </div>
+          <button
+            type="submit"
+            className="w-full py-2 px-4 rounded-md bg-blue-600 text-white font-semibold hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition-all"
+          >
+            Add Task
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

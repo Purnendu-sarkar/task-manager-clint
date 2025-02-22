@@ -9,7 +9,7 @@ const TaskBoard = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/tasks")
+      .get("https://task-manager-backend-topaz.vercel.app/tasks")
       .then((response) => setTasks(response.data))
       .catch((error) => console.error("Error fetching tasks:", error));
   }, []);
@@ -31,13 +31,13 @@ const TaskBoard = () => {
 
     // Send update request to backend
     axios
-      .put(`http://localhost:5000/tasks/${taskId}`, { category: newCategory })
+      .put(`https://task-manager-backend-topaz.vercel.app/tasks/${taskId}`, { category: newCategory })
       .catch((error) => console.error("Error updating task:", error));
   };
 
   const deleteTask = (taskId) => {
     axios
-      .delete(`http://localhost:5000/tasks/${taskId}`)
+      .delete(`https://task-manager-backend-topaz.vercel.app/tasks/${taskId}`)
       .then(() => {
         setTasks((prevTasks) =>
           prevTasks.filter((task) => task._id !== taskId)
